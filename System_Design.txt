@@ -1,0 +1,30 @@
+Problems asked in interviews:-
+
+1. Design an image upload system
+    what protocol will you use?
+    Write code for CRUD Api's
+    Status code, request payload , response payload , headers, authentication applications
+    SQL query related to above system ( related to joins)
+    Optimise query
+    indexing ( implementation and applications)
+
+2. Design a Job Scheduler.
+    Low-Level System Design: YouTube channels: Concepts and Coding, Keerti Purswani, Telusko, Christopher Okhravi
+    High-Level System Design: Gaurav Sen, sudoCODE, Exponent, ByteByteGo.
+
+3. JS QUESTION:- 
+    Based on Frontend Domain. Lot of in-depth discussion on javaScript core concepts like
+    Promises
+    Closures
+    Hoisting
+    Temporal dead zone
+    async await
+    Implementation of promises
+    Currying
+    Strict
+    Let vs const
+    Based on concepts of React:
+
+    Hooks
+    class and functional components,
+    states and props, etc
