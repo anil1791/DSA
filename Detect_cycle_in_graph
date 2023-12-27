@@ -1,0 +1,23 @@
+bool dfs(int idx, vector<int> graph[], bool *vis, int n, vector<int> &st,vector<int>&recursionStack)
+    {
+        cout<<__LINE__<<" : "<<__func__<<" : ( "<< idx << ")"<<endl;
+        vis[idx] = true;
+        recursionStack[idx]=1;
+        for (int i = 0; i < graph[idx].size(); i++)
+        {
+            if (!vis[graph[idx][i]])
+            {
+                if(dfs(graph[idx][i], graph, vis, n, st,recursionStack))
+                    return true;
+            }
+            else 
+            if(recursionStack[graph[idx][i]])
+            return true;
+
+        }
+        
+        st.push_back(idx);
+        recursionStack[idx]=0;
+        // cout<<" node  :: "<<idx<<endl;
+        return false;
+    }
