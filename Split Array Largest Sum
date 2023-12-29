@@ -1,0 +1,48 @@
+class Solution {
+public:
+    bool canSplit(int mid, vector<int> &nums, int k)
+{
+    int cnt = 1;
+    int currSum = 0;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        if (nums[i] > mid)
+            return false;
+        if (currSum + nums[i] > mid)
+        {
+            cnt++;
+            //cout<<"i : "<<i<<endl;
+            currSum = nums[i];
+        }
+        else
+            currSum += nums[i];
+    }
+    //cout<<"cnt : "<<cnt<<endl;
+    return cnt <= k;
+    // if cnt == k then right =mid-1
+    // if cnt < k then right =mid-1
+    // if cnt > k then left = mid + 1
+}
+
+int splitArray(vector<int> &nums, int k)
+{
+    int right = std::accumulate(nums.begin(), nums.end(), 0);
+    int left = 0;
+    int ans = 0;
+    while (left <= right)
+    {
+        long long int mid = (left + right) / 2;
+        //cout<<"left "<<left<<" right "<<right<<" mid "<<mid<<endl;
+    
+        if (canSplit(mid, nums, k))
+        {
+            ans = mid;
+            right = mid - 1;
+        }
+        else        
+            left = mid + 1;    
+            
+    }
+    return ans;
+}
+};
