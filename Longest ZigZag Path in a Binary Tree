@@ -1,0 +1,34 @@
+    enum path{
+    RIGHT,
+    LEFT,START
+};
+
+void recur(TreeNode* root, int size, int&maxsize,  path direction)
+{
+    if(!root)
+    return;
+    if(size>maxsize)
+    maxsize=size;
+    if(direction==START)
+    {
+        recur(root->left,size+1,maxsize,LEFT);
+        recur(root->right,size+1,maxsize,RIGHT);
+    }
+    else
+    if(direction==LEFT)
+    {
+        recur(root->left,1,maxsize,LEFT);
+        recur(root->right,size+1,maxsize,RIGHT);
+    }
+    else if(direction==RIGHT)
+    {
+        recur(root->left,size+1,maxsize,LEFT);
+        recur(root->right,1,maxsize,RIGHT);
+    }
+}
+
+int longestZigZag(TreeNode* root) {
+        int size=0,maxsize=0;
+        recur(root, size, maxsize, START);
+        return maxsize;
+}
