@@ -1,0 +1,57 @@
+class Solution {
+    public:
+
+    void inOrderTraversal(TreeNode *root, std::vector<int> &result)
+    {
+        if (root)
+        {
+            inOrderTraversal(root->left, result);
+            result.push_back(root->val);
+            inOrderTraversal(root->right, result);
+        }
+    }
+
+    std::vector<std::vector<int>> closestNodes(TreeNode *root, vector<int> &queries)
+    {
+        std::vector<std::vector<int>> result;
+
+        std::vector<int> v;
+        inOrderTraversal(root, v);
+
+        for (int i : v)
+        {
+            //cout << i << " ";
+        }
+        //cout << endl;
+        for (int q : queries)
+        {
+            int l = 0, r = v.size() - 1;
+            int mm = -1, MM = -1;
+            while (l <=  r)
+            {
+                long long int mid = (l + r) / 2;
+                //cout << "v[mid] " << v[mid] << " q " << q << " l " << l << " r " << r << endl;
+                if (v[mid] == q)
+                {
+                    mm = q;
+                    MM = q;
+                    break;
+                }
+                else if (v[mid] > q)
+                {
+                    MM = v[mid];
+                    r = mid - 1;
+                }
+                else
+                {
+                    mm = v[mid];
+                    l = mid + 1;
+                }
+            }
+            result.push_back({mm, MM});
+        }
+
+        return result;
+    }
+
+};
