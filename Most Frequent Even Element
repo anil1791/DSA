@@ -1,0 +1,26 @@
+int mostFrequentEven(vector<int> &nums)
+    {
+        unordered_map<int, int> mp;
+        for (int i : nums)
+        {
+            if(i%2==0)
+            mp[i]++;
+        }
+        int a=INT_MAX,b=0;
+        for (const auto &[num, freq] : mp)
+        {
+            //cout<<num<<" "<<freq<<endl;
+            if(freq> b)
+            {
+                b=freq;
+                a=num;
+            }
+            else
+             if(freq == b)
+             {
+                 if(num<a)
+                 a=num;
+             }
+        }
+        return a==INT_MAX?-1:a;
+    }
