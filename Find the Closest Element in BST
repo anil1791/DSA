@@ -1,0 +1,16 @@
+int minDiff(Node *root, int target)
+    {
+        //Your code here
+        int ans = INT_MAX;
+        while (root)
+        {
+            if (root->data == target)
+                return 0;
+            ans = (abs(target - root->data) < ans) ? abs(target - root->data) : ans;
+            if (root->data < target)
+                root = root->right;
+            else
+                root = root->left;
+        }
+        return ans;
+    }
