@@ -1,0 +1,37 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<string> paths(int i,int j, int m,int n)
+{
+    if(i==m-1&&j==n-1){
+        return {""};
+    }
+    vector<string>fpaths;
+    
+    for(int k=1;k<=m-i;k++){
+        vector<string>vpath = paths(i+k,j,m,n);
+        for(int x=0;x<vpath.size();x++){
+            fpaths.push_back("v"+std::to_string(k) +vpath[x]);
+        }
+    }
+    for(int k=1;k<=n-j;k++){
+        vector<string>hpath = paths(i,j+k,m,n);
+        for(int x=0;x<hpath.size();x++){
+            fpaths.push_back("h"+std::to_string(k) +hpath[x]);
+        }
+    }
+    for(int k=1;k<=min(n-j,m-i);k++){
+        vector<string>dpath = paths(i+k,j+k,m,n);
+        for(int x=0;x<dpath.size();x++){
+            fpaths.push_back("d"+std::to_string(k) +dpath[x]);
+        }
+    }
+    return fpaths;
+}
+
+int main() {
+    vector<string>vv = paths(0,0,3,3);
+    for(const auto&str: vv){
+        cout<<str<<" ";
+    }
+}
