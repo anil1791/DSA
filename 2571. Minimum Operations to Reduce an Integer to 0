@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int minOperations(int n) {
+        int i = 1; int op = 0;
+    while (n)
+    {
+        //cout << n << " ";
+        if (n & i)
+        {
+            int start = i;
+            int oneCount = 0;
+            while (n & i)
+            {
+                oneCount++;
+                i = i << 1;
+            }
+            if (oneCount >= 2)
+            {
+                n = n + start;
+                op++;
+            }
+            else
+            {
+                n = n - start;
+                op++;
+            }
+        }else{
+            i=i<<1;
+        }
+    }
+    return op;
+    }
+};
